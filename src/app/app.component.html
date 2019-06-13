@@ -1,4 +1,17 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="timer">
 {{ time$ | async }}
+</div>
+<div class="btn-group">
+  <button
+    (click)="startStop()"
+    class="btn"
+  >{{ btnName }}</button>
+  <button
+    #waitBtn
+    class="btn"
+  >Wait</button>
+  <button
+    (click)="reset()"
+    class="btn"
+  >Reset</button>
 </div>

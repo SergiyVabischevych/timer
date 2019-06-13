@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.btn {
+  cursor: pointer;
+  margin: 10px;
+  font-size: 24px;
+  background-color: blue;
+  color: white;
+  width: 75px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  font-size: 120px;
+  color: white;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}

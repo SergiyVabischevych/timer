@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'timer'`, () => {
+  it(`should have 3 buttons`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('timer');
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelectorAll('button.btn').length).toBe(3);
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render time in a div.timer tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to timer!');
+    expect(compiled.querySelector('div.timer').textContent).toContain('00:00:00');
   });
 });
