@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
   time$: Observable<string> = this.timerService.getInitialMoment();
   btnName: string = StartStop.Start;
 
-  private clicked = 0;
+  private waitBtnClicked = 0;
 
   @ViewChild('waitBtn', { static: false }) waitBtn!: ElementRef<HTMLButtonElement>;
 
@@ -27,34 +27,51 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     fromEvent(this.waitBtn.nativeElement, 'click')
       .pipe(
-        tap(e => this.clicked++),
+        tap(() => this.waitBtnClicked++),
         delay(300),
       )
       .subscribe(() => {
-        if (this.clicked === 2) {
+        if (this.waitBtnClicked === 2) {
           this.wait();
-        } else {
-          this.clicked = 0;
         }
+        this.waitBtnClicked = 0;
       });
   }
 
   startStop(): void {
     if (this.btnName === StartStop.Start) {
-      this.btnName = StartStop.Stop;
+      this.setBtnStop();
       this.timerService.startTimer();
     } else {
-      this.btnName = StartStop.Start;
+      this.setBtnStart();
       this.timerService.stopTimer();
     }
   }
 
   wait(): void {
-    this.btnName = StartStop.Start;
+    this.setBtnStart();
     this.timerService.stopTimer();
   }
 
   reset(): void {
+    this.setBtnStart();
     this.timerService.resetTimer();
   }
+
+  isBtnStart(): boolean {
+    return this.btnName === StartStop.Start;
+  }
+
+  isBtnStop(): boolean {
+    return this.btnName === StartStop.Stop;
+  }
+
+  private setBtnStart(): void {
+    this.btnName = StartStop.Start;
+  }
+
+  private setBtnStop(): void {
+    this.btnName = StartStop.Stop;
+  }
+
 }
