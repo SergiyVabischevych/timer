@@ -1,0 +1,19 @@
+<div class="timer">
+{{ time$ | async }}
+</div>
+<div class="btn-group">
+  <button
+    (click)="startStop()"
+    [class.btn-start]="isBtnStart()"
+    [class.btn-stop]="isBtnStop()"
+    class="btn"
+  >{{ btnName }}</button>
+  <button
+    #waitBtn
+    class="btn btn-wait"
+  >Wait</button>
+  <button
+    (click)="reset()"
+    class="btn btn-reset"
+  >Reset</button>
+</div>
