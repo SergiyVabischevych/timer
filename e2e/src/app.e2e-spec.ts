@@ -1,8 +1,7 @@
 import { AppPage } from './app.po';
-import { browser, logging, ElementFinder } from 'protractor';
-import { protractor } from 'protractor/built/ptor';
+import { browser, logging } from 'protractor';
 
-describe('timer-project App Component', () => {
+describe('timer App Component', () => {
   let page: AppPage;
 
   beforeEach(() => {
